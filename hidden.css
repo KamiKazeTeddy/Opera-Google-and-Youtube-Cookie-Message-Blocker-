@@ -1,19 +1,19 @@
-html .QVCmK {
-    overflow: visible;
+html {
+    overflow: visible !important;
 }
 
 .gTMtLb {
-    display: none;
+    display: none !important;
 }
 
 #dialog {
-    display: none;
+    display: none !important;
 }
 
 iron-overlay-backdrop {
-    display: none;
+    display: none !important;
 }
 
 ytd-popup-container .style-scope {
-    display: none;
+    display: none !important;
 }
