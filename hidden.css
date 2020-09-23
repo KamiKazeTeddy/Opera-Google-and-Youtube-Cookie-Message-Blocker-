@@ -9,3 +9,7 @@
 iron-overlay-backdrop {
     display: none;
 }
+
+ytd-popup-container .style-scope {
+    display: none;
+}

@@ -2,8 +2,8 @@
 	"manifest_version": 2,
 
 	"name": "Google and Youtube Cookie Message Blocker",
-	"description": "Removes the Cookie Message (perfect for ingocnito-mode)",
-	"version": "1.0",
+	"description": "Removes the Cookie Message from Google and YouTube (perfect for ingocnito-mode). Also removes the \"Wanna login\"-message from YouTube",
+	"version": "1.1",
 	"content_scripts": [
 		{
 			"matches": ["*://www.google.com/*", "*://www.youtube.com/*"],
