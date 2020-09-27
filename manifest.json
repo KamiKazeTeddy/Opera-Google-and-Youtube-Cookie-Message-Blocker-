@@ -3,7 +3,7 @@
 
 	"name": "Google and Youtube Cookie Message Blocker",
 	"description": "Removes the Cookie Message from Google and YouTube (perfect for ingocnito-mode). Also removes the \"Wanna login\"-message from YouTube",
-	"version": "1.3",
+	"version": "2.0",
 	"incognito": "split",
 	"icons": {
 		"64": "icon_liddl.png"
