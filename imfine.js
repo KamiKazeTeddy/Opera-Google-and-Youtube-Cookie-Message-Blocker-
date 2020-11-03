@@ -12,7 +12,7 @@ function ChecknSetMaCookie(maUrl, maSource){
                         }
                     }
                     catch {
-                        console.log("MaCookie not set")
+                        //console.log("MaCookie not set")
                         chrome.cookies.set({url: "https://www.youtube.com", name: "CONSENT", value: "YES+DE.de+V14+BX", domain: ".youtube.com"}) //Youtube Cookies
                         chrome.cookies.set({url: "https://www.youtube.com", name: "VISITOR_INFO1_LIVE", value: "kfkINDTTTTM", domain: ".youtube.com"}) //Youtube Loging pls
                         chrome.cookies.set({url: "https://www.youtube.com", name: "CheckMaCookie", value: "YEET", domain: ".youtube.com"}) //OWN Check Cookie#
@@ -65,8 +65,8 @@ function setGYCookie(tab) {
 
 chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, tab) { //Checks Tabstatus + activate script when Tab changes
     if (changeInfo.status == 'complete' && tab.active) {
-        console.log("1. PendingURL:" + tab.pendingUrl);
-        console.log("1. URL: " + tab.url); //Outputs the current URL (DEBUG)
+        //console.log("1. PendingURL:" + tab.pendingUrl);
+        //console.log("1. URL: " + tab.url); //Outputs the current URL (DEBUG)
         setGYCookie(tab)
          
     }
