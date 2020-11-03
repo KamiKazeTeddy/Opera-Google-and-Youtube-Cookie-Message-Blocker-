@@ -15,8 +15,12 @@
 	"permissions": [
 		"tabs",
 		"cookies",
-		"*://*.google.com/*", 
+		"*://*.google.com/*",
 		"*://*.youtube.com/*",
-		"*://*.youtu.be/*"
+		"*://*.youtu.be/*",
+		"https://www.google.de/",
+		"https://www.google.ac/",
+		"https://www.google.ad/",
+		"https://www.google.co.jp/"
 	]
 }

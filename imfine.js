@@ -1,4 +1,4 @@
-function ChecknSetMaCookie(maUrl, maSource){
+function ChecknSetMaCookie(maUrl, maSource, madomain){
     if (maSource == "yt")
     {
         //YOUTUBE
@@ -13,9 +13,9 @@ function ChecknSetMaCookie(maUrl, maSource){
                     }
                     catch {
                         //console.log("MaCookie not set")
-                        chrome.cookies.set({url: "https://www.youtube.com", name: "CONSENT", value: "YES+DE.de+V14+BX", domain: ".youtube.com"}) //Youtube Cookies
-                        chrome.cookies.set({url: "https://www.youtube.com", name: "VISITOR_INFO1_LIVE", value: "kfkINDTTTTM", domain: ".youtube.com"}) //Youtube Loging pls
-                        chrome.cookies.set({url: "https://www.youtube.com", name: "CheckMaCookie", value: "YEET", domain: ".youtube.com"}) //OWN Check Cookie#
+                        chrome.cookies.set({url: "https://www.youtube.com", name: "CONSENT", value: "YES+DE.de+V14+BX", domain: madomain}) //Youtube Cookies
+                        chrome.cookies.set({url: "https://www.youtube.com", name: "VISITOR_INFO1_LIVE", value: "kfkINDTTTTM", domain: madomain}) //Youtube Loging pls
+                        chrome.cookies.set({url: "https://www.youtube.com", name: "CheckMaCookie", value: "YEET", domain: madomain}) //OWN Check Cookie#
                         //console.log("2. Youtube Cookie set.") //DEBUG
                         chrome.tabs.getSelected(null, function(tab) { //Reload page
                             var code = 'window.location.reload();';
@@ -27,15 +27,15 @@ function ChecknSetMaCookie(maUrl, maSource){
     else if (maSource == "g")
     {
         //GOOGLE
-        if (document.cookie.search("CheckMaCookie=YEET") != -1) //Google doesnt allow me do read my Cookie, so I have to use document.cookie (not like on YT)
+        if (document.cookie.search("CheckMaCookie=YEET" + madomain) != -1) //Google doesnt allow me do read my Cookie, so I have to use document.cookie (not like on YT)
         {
             //console.log("MaCookie for Google is set")//DEBUG
             return 0
         }
         else 
         {
-            chrome.cookies.set({url: "https://www.google.com", name: "CONSENT", value: "YES+DE.de+V14+BX", domain: ".google.com"}) //Google Cookies
-            document.cookie = "CheckMaCookie=YEET"; //OWN Check Cookie
+            chrome.cookies.set({url: maUrl, name: "CONSENT", value: "YES+DE.de+V14+BX", domain: madomain}) //Google Cookies
+            document.cookie = "CheckMaCookie=YEET" + madomain; //OWN Check Cookie
             //chrome.cookies.set({url: "https://www.google.com", name: "CheckMaCookie", value: "YEET", domain: ".google.com"}) //OWN Check Cookie //This doesnt work for google, dunno why
             chrome.tabs.getSelected(null, function(tab) { //Reload page
                 var code = 'window.location.reload();';
@@ -50,15 +50,36 @@ function setGYCookie(tab) {
     if(tab.url !== undefined)
     {
         //Google
-        if ((tab.url).search("google.com") != -1)
+        if  ((tab.url).search("google") != -1)
         {
-            ChecknSetMaCookie("https://www.google.com", "g")
+            if ((tab.url).search("google.com") != -1)
+            {
+                ChecknSetMaCookie("https://www.google.com", "g", ".google.com") //Worldwide
+            }
+            else if ((tab.url).search("google.de") != -1)
+            {
+                ChecknSetMaCookie("https://www.google.de", "g", ".google.de") //Germany
+            }
+            else if ((tab.url).search("google.ac") != -1)
+            {
+                ChecknSetMaCookie("https://www.google.ac", "g", ".google.ac") //Ascension Island
+            }
+            else if ((tab.url).search("google.ad") != -1)
+            {
+                ChecknSetMaCookie("https://www.google.ad", "g", ".google.ad") // Andorra
+            }
+            else if ((tab.url).search("google.co.jp") != -1)
+            {
+                ChecknSetMaCookie("https://www.google.co.jp", "g", ".google.co.jp") //Japan
+            }
         }
         //Youtube
         else if((tab.url).search("youtube.com") != -1 || (tab.url).search("youtu.be") != -1)
         {
-            ChecknSetMaCookie("https://www.youtube.com", "yt")      
+            ChecknSetMaCookie("https://www.youtube.com", "yt", ".youtube.com")      
         }
+        
+        
     }
 }
 
